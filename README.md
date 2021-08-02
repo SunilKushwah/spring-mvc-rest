@@ -1,2 +1,1 @@
-# spring-mvc-rest
-Demo project for rest api.
+# Spring Framework MVC Rest Application
