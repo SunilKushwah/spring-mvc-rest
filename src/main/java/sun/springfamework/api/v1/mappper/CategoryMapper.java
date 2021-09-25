@@ -5,7 +5,7 @@ import org.mapstruct.factory.Mappers;
 import sun.springfamework.api.v1.model.CategoryDTO;
 import sun.springfamework.domain.Category;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface CategoryMapper {
 
     CategoryMapper INSTANCE = Mappers.getMapper(CategoryMapper.class);
