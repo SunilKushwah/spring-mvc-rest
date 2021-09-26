@@ -1,10 +1,8 @@
 package sun.springfamework.controllers.v1;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import sun.springfamework.api.v1.model.CustomerDTO;
 import sun.springfamework.api.v1.model.CustomerListDTO;
 import sun.springfamework.services.CustomerService;
@@ -26,6 +24,12 @@ public class CustomerController {
 
     @GetMapping("{id}")
     public ResponseEntity<CustomerDTO> getCustomer(@PathVariable long id){
-        return ResponseEntity.ok().body(customerService.getCustomerById(id));
+        return new ResponseEntity(customerService.getCustomerById(id),HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<CustomerDTO> createNewCustomer(@RequestBody CustomerDTO customerDTO){
+        CustomerDTO newCustomer = customerService.createNewCustomer(customerDTO);
+        return new ResponseEntity(newCustomer, HttpStatus.CREATED);
     }
 }
